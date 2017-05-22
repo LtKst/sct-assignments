@@ -19,5 +19,5 @@ image.addEventListener('load', () => {
 
 
 function randStep(min, max, step) {
-    return min + (step * Math.floor(Math.random()*(max-min)/step) );
+    return min + (step * Math.floor(Math.random() * (max - min) / step));
 }
