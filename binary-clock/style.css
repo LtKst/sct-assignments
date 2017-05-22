@@ -1,0 +1,19 @@
+body {
+    background-color: #021916;
+    color: #fff;
+    
+    text-align: center;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+#canvas {
+    background-color: #fff;
+}
+
+input {
+    margin: 10px;
+}
