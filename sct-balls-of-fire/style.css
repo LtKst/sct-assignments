@@ -1,9 +1,0 @@
-.container {
-    width: 800PX;
-    margin: auto;
-    border: 2px solid black;
-}
-
-#canvas {
-    background-image: url(grid.png);
-}
