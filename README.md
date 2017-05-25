@@ -1,6 +1,6 @@
 # SCT
 
-This is a repository containing all my JavaScript assignments for SCT (scripting) on [Mediacollege](https://www.ma-web.nl/)
+This is a repository containing all my JavaScript assignments for SCT (scripting) for [Mediacollege](https://www.ma-web.nl/)
 
 ---
 
