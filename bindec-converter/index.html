@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BinDec converter ~ Koen Sparreboom ~ GD1A</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+        <div class="container" style="width:300px;">
+
+            <h1>BinDec converter</h1>
+            
+            <hr>
+            
+            <p>Byte</p>
+            <input oninput="Update()" type="text" id="byteValue" onkeypress='return event.charCode == 48 || event.charCode == 49'>
+            <p>Decimal</p>
+            <input disabled type="number" id="decimalValue">
+            <p>Hexadecimal</p>
+            <input disabled type="text" id="hexadecimalValue">
+            
+            <br>
+            <br>
+            <hr>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

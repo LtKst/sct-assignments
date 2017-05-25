@@ -1,0 +1,19 @@
+body {
+    background-color: #121415;
+    color: white;
+}
+
+.container {
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+input[type=number], input[type=text] {
+    background-color: #121415;
+    color: white;
+    
+    border: 1px solid white;
+    
+    text-align: center;
+}
