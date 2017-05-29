@@ -13,3 +13,8 @@ body {
     background-color: aliceblue;
     border: 2px solid black;
 }
+
+h1 {
+    font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+    border-bottom: 1px solid white;
+}
