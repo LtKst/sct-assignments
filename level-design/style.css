@@ -1,9 +1,10 @@
 body {
     background-color: #1b2022;
+    font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
 }
 
 #container {
-    width: 512px;
+    width: 600px;
     margin: 50px auto;
     text-align: center;
     color: white;
@@ -14,7 +15,21 @@ body {
     border: 2px solid black;
 }
 
-h1 {
-    font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
-    border-bottom: 1px solid white;
+.button {
+    background-color: white;
+    border: none;
+    
+    width: 150px;
+    height: 40px;
+    
+    transition: all 0.2s;
+}
+
+.button:hover {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+}
+
+.button:active {
+    position: relative;
+    top: 2px;
 }

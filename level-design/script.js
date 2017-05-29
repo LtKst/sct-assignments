@@ -12,6 +12,10 @@ var levelN = 64;
 var levelRow = 8;
 var tileSize = 64;
 
+var playerSpeed = 5;
+var playerX = 0;
+var playerY = 0;
+
 var myLevel = [
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0,
@@ -51,7 +55,25 @@ function draw() {
         sprites[myLevel[i]].draw(x, y);
     }
     
-    sprites[1].draw(0, 0);
+    if (keys[87])
+    {
+        playerY -= playerSpeed;
+    }
+    else if (keys[83])
+    {
+        playerY += playerSpeed;
+    }
+    
+    if (keys[68])
+    {
+        playerX += playerSpeed;
+    }
+    else if (keys[65])
+    {
+        playerX -= playerSpeed;
+    }
+    
+    sprites[1].draw(playerX, playerY);
 }
 
 function randomizeLevel(obstaclePercantage)
@@ -71,4 +93,14 @@ function randomizeLevel(obstaclePercantage)
 
 function randomRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var keys = [0];
+
+window.onkeyup = function(e) {
+    keys[e.keyCode] = false;
+}
+
+window.onkeydown = function(e) {
+    keys[e.keyCode] = true;
 }
