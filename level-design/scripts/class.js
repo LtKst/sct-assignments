@@ -12,4 +12,8 @@ class Sprite {
     draw(x, y) {
         context.drawImage(this.image, this.startX, this.startY, 64, 64, x, y, this.width, this.height);
     }
+    
+    draw(x, y, width, height) {
+        context.drawImage(this.image, this.startX, this.startY, 64, 64, x, y, width, height);
+    }
 }
