@@ -12,11 +12,14 @@ var levelN = 64;
 var levelRow = 8;
 var tileSize = 64;
 
+// player variables
 var playerSpeed = 0.5;
 var playerX = 0;
 var playerY = 0;
 var playerSize = 62;
+var boundOffset = 5;
 
+// the level
 var myLevel = [
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0,
@@ -28,6 +31,7 @@ var myLevel = [
     0, 0, 0, 0, 0, 0, 0, 0
 ];
 
+// the image variable
 var image = new Image();
 image.src = "tank_sheet.png";
 
@@ -38,6 +42,7 @@ image.addEventListener('load', function () {
 });
 
 function draw() {
+    // clear the context
     context.clearRect(0, 0, canvas.width, canvas.height);
     
     // fill the sprites array
@@ -56,6 +61,27 @@ function draw() {
         sprites[myLevel[i]].draw(x, y, tileSize, tileSize);
     }
     
+    // update the player
+    updatePlayer();
+}
+
+function randomizeLevel(obstaclePercantage)
+{
+    for (let i = 1; i < myLevel.length; i++)
+    {
+        if (randomRange(0, 100) < obstaclePercantage)
+        {
+            myLevel[i] = randomRange(24, 30);
+        }
+        else
+        {
+            myLevel[i] = 0;
+        }
+    }
+}
+
+function updatePlayer()
+{
     // up
     if (keys[87])
     {
@@ -106,22 +132,27 @@ function draw() {
             playerX -= playerSpeed;
     }
     
-    sprites[1].draw(playerX, playerY, playerSize, playerSize);
-}
-
-function randomizeLevel(obstaclePercantage)
-{
-    for (let i = 1; i < myLevel.length; i++)
+    // check if the player is outside the level
+    if (playerX >= canvas.width + boundOffset)
     {
-        if (randomRange(0, 100) < obstaclePercantage)
-        {
-            myLevel[i] = randomRange(24, 30);
-        }
-        else
-        {
-            myLevel[i] = 0;
-        }
+        playerX = -playerSize;
     }
+    else if (playerX <= -playerSize - boundOffset)
+    {
+        playerX = canvas.width;
+    }
+    
+    if (playerY >= canvas.height + boundOffset)
+    {
+        playerY = -playerSize;
+    }
+    else if (playerY <= -playerSize - boundOffset)
+    {
+        playerY = canvas.height;
+    }
+    
+    // draw the player
+    sprites[1].draw(playerX, playerY, playerSize, playerSize);
 }
 
 function findGridIndex(x, y, width, height, rowCount)
