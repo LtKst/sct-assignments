@@ -1,10 +1,14 @@
 body {
-    background-color: gray;
+    background-color: #121415;
 }
 
 #container {
     width: 512px;
     margin: 100px auto;
+    
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
 }
 
 #canvas {

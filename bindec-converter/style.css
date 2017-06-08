@@ -1,10 +1,11 @@
 body {
     background-color: #121415;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
-    width: 300px;
+    width: 380px;
     padding: 20px;
     text-align: center;
 }
