@@ -5,7 +5,10 @@ body {
 .container {
     width: 800PX;
     margin: auto;
-    border: 2px solid black;
+    
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #canvas {
