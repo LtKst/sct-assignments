@@ -1,0 +1,17 @@
+body {
+    background-color: #1d1f21;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+    
+    text-align: center;
+    
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+#canvas {
+    border: 2px solid #fff;
+}
