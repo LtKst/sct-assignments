@@ -4,10 +4,10 @@ var context = canvas.getContext('2d');
 var sx,sy,sw,sh,x,y,w,h;
 
 var image = new Image();
-image.src = "sprite-sheet.png";
+image.src = "sprites/darth-vader.png";
 
 var wall = new Image();
-wall.src = "wall.png";
+wall.src = "sprites/wall.png";
 var wallX = 0;
 
 var i = 9;

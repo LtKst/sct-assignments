@@ -11,8 +11,3 @@ body {
     font-family: 'Roboto', sans-serif;
     color: white;
 }
-
-#canvas {
-    border: 2px solid #fff;
-    image-rendering: pixelated;
-}
