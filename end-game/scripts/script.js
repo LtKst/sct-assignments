@@ -18,6 +18,10 @@ var playerX = 0;
 var playerY = 0;
 var playerSize = 62;
 var boundOffset = 5;
+var playerRotation = Math.PI;
+var playerAnimationFrame = 1;
+
+var frame = 0;
 
 // the level
 var myLevel = [
@@ -63,6 +67,8 @@ function draw() {
     
     // update the player
     updatePlayer();
+    
+    frame++;
 }
 
 function randomizeLevel(obstaclePercantage)
@@ -84,25 +90,14 @@ function updatePlayer()
 {
     context.save();
     
-    context.translate(canvas.width/2, canvas.height/2);
+    context.translate(playerX, playerY);
+    context.translate(playerSize * 0.5, playerSize * 0.5);
     
+    // process input
     if (keys[87])
     {
-        context.rotate(0);
-    }
-    else if (keys[83])
-    {
-        context.rotate(Math.PI);
-    }
-    
-    // draw the player
-    sprites[1].draw(playerX, playerY, playerSize, playerSize);
-    
-    context.restore();
-    
-    // up
-    if (keys[87])
-    {
+        animate();
+        
         collidedUp = false;
         
         if (myLevel[findGridIndex(playerX, playerY-1, tileSize, tileSize, levelRow)] >= 24
@@ -111,10 +106,13 @@ function updatePlayer()
         
         if (!collidedUp)
             playerY -= playerSpeed;
+        
+        playerRotation = 0;
     }
-    // down
     else if (keys[83])
     {
+        animate();
+        
         collidedDown = false;
         
         if (myLevel[findGridIndex(playerX, playerY+playerSize+1, tileSize, tileSize, levelRow)] >= 24
@@ -123,11 +121,13 @@ function updatePlayer()
         
         if (!collidedDown)
             playerY += playerSpeed;
+        
+        playerRotation = Math.PI;
     }
-    
-    // right
-    if (keys[68])
+    else if (keys[68])
     {
+        animate();
+        
         collidedRight = false;
         
         if (myLevel[findGridIndex(playerX+playerSize+1, playerY, tileSize, tileSize, levelRow)] >= 24
@@ -136,10 +136,13 @@ function updatePlayer()
         
         if (!collidedRight)
             playerX += playerSpeed;
+        
+        playerRotation = Math.PI/2;
     }
-    // left
     else if (keys[65])
     {
+        animate();
+        
         collidedLeft = false;
         
         if (myLevel[findGridIndex(playerX-1, playerY, tileSize, tileSize, levelRow)] >= 24
@@ -148,25 +151,29 @@ function updatePlayer()
         
         if (!collidedLeft)
             playerX -= playerSpeed;
+        
+        playerRotation = Math.PI*1.5;
     }
     
-    // check if the player is outside the level
-    if (playerX >= canvas.width + boundOffset)
-    {
-        playerX = -playerSize;
-    }
-    else if (playerX <= -playerSize - boundOffset)
-    {
-        playerX = canvas.width;
-    }
+    // rotate the context
+    context.rotate(playerRotation);
     
-    if (playerY >= canvas.height + boundOffset)
+    context.translate(-playerSize * 0.5,-playerSize * 0.5);
+    
+    // draw the player
+    sprites[playerAnimationFrame].draw(0, 0, playerSize, playerSize);
+    
+    context.restore();
+}
+
+function animate()
+{
+    if (frame % 10 == 1)
     {
-        playerY = -playerSize;
-    }
-    else if (playerY <= -playerSize - boundOffset)
-    {
-        playerY = canvas.height;
+        if (playerAnimationFrame < 8)
+            playerAnimationFrame++
+        else
+            playerAnimationFrame = 1;
     }
 }
 
@@ -177,14 +184,4 @@ function findGridIndex(x, y, width, height, rowCount)
 
 function randomRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-var keys = [0];
-
-window.onkeyup = function(e) {
-    keys[e.keyCode] = false;
-}
-
-window.onkeydown = function(e) {
-    keys[e.keyCode] = true;
 }
