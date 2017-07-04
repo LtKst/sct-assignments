@@ -155,6 +155,25 @@ function updatePlayer()
         playerRotation = Math.PI*1.5;
     }
     
+    // check if the player is outside the level
+    if (playerX >= canvas.width + boundOffset)
+    {
+        playerX = -playerSize;
+    }
+    else if (playerX <= -playerSize - boundOffset)
+    {
+        playerX = canvas.width;
+    }
+    
+    if (playerY >= canvas.height + boundOffset)
+    {
+        playerY = -playerSize;
+    }
+    else if (playerY <= -playerSize - boundOffset)
+    {
+        playerY = canvas.height;
+    }
+    
     // rotate the context
     context.rotate(playerRotation);
     
